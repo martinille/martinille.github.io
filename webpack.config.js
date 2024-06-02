@@ -5,20 +5,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
-const cssConfig = ['css-loader', 'postcss-loader']
-
 let config = {
     devtool: "inline-source-map",
     mode: process.env.NODE_ENV || 'development',
     entry: {
         main: "./src/index.js",
-        //style1: "./src/style/style1.less",
-        //style1: "./src/style/tailwind.css",
     },
     output: {
         clean: true,
         //publicPath: '/assets/',
         filename: '[name].[contenthash].js',
+        assetModuleFilename: '[name][ext]',
         path: path.resolve(__dirname, 'docs'),
     },
     devServer: {
@@ -33,34 +30,34 @@ let config = {
         server: "http",
     },
     module: {
-        rules: [{
-        //     test: /\.svg$/i,
-        //     use: ["file-loader", "svgo-loader"],
-        // },{
-        //     test: /\.less$/i,
-        //     use: [MiniCssExtractPlugin.loader, ...cssConfig, "less-loader"]
-        // }, {
-            test: /\.css$/,
-            //include: path.resolve(__dirname, 'src/style'),
-            use: [MiniCssExtractPlugin.loader, ...cssConfig],
-        },{
-        },]
+        rules: [
+            {
+                test: /\.(svg|jpe?g|png|webp)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+            }
+        ]
     },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
             template: 'src/index.html',
-            chunks: ['main']
         })
     ],
+    optimization: {
+        minimize: false
+    }
 };
 
 
 if ('production' === config.mode) {
-    config = {...config,
+    config = {
+        ...config,
         devtool: false,
         devServer: false,
         optimization: {
@@ -73,5 +70,6 @@ if ('production' === config.mode) {
     }
 }
 
+//console.log(config);
 
 module.exports = config;

@@ -16,7 +16,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'sans': ['"Dosis", sans-serif'],
+        'sans': ['"Inter", sans-serif'],
+      },
+      fontSize: {
+        // base: "3rem",
       },
       colors: {
         primary: {

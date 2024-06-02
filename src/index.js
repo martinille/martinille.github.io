@@ -1,2 +1,2 @@
 import './style.css';
-// import './main.less';
+import "./prof-pic-1.jpg";
