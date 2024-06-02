@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+@tailwind base;
+@layer base {
+    body {
+        @apply bg-white text-gray-900;
+    }
+
+    main {
+        @apply pb-10;
+    }
+
+    h1 {
+        @apply text-3xl font-bold mb-2;
+    }
+
+    h2 {
+        @apply text-2xl font-bold mb-1.5;
+    }
+
+    h3 {
+        @apply text-xl font-bold mb-1;
+    }
+
+    a {
+        @apply underline text-primary;
+    }
+
+    a:hover {
+        @apply no-underline;
+    }
+
+    p {
+        @apply mb-2;
+    }
+
+    ul {
+        @apply list-disc list-outside ml-6;
+    }
+
+    li::marker {
+        @apply text-primary;
+    }
+
+    li {
+        @apply list-item leading-7;
+    }
+
+    section {
+        @apply mb-6;
+    }
+
+    table, th, td {
+        @apply text-left;
+    }
+}
+
+@tailwind components;
+@layer components {
+    .bg-primary {
+        @apply bg-primary-500;
+    }
+
+    .text-primary {
+        @apply text-primary-500;
+    }
+
+    .btn {
+        @apply no-underline;
+    }
+
+    .btn-primary {
+        @apply inline-block px-8 py-3
+        bg-primary-500 rounded-md
+        text-white font-medium text-center
+        transition duration-500 ease-in-out
+        focus:ring-4 focus:outline-none focus:ring-primary-800
+        ;
+    }
+
+    .btn-primary:hover {
+        @apply bg-primary-700;
+    }
+}
+
+@tailwind utilities;
+
+
