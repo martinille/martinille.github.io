@@ -2,8 +2,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 
 let config = {
     devtool: "inline-source-map",
@@ -13,7 +11,6 @@ let config = {
     },
     output: {
         clean: true,
-        //publicPath: '/assets/',
         filename: '[name].[contenthash].js',
         assetModuleFilename: '[name][ext]',
         path: path.resolve(__dirname, 'docs'),
@@ -69,7 +66,5 @@ if ('production' === config.mode) {
         }
     }
 }
-
-//console.log(config);
 
 module.exports = config;
